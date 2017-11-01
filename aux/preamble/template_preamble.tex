@@ -1,7 +1,27 @@
+% Figures
+\usepackage{graphicx}
+
+% Enable url formatting
+\usepackage{url}
+\usepackage{hyperref}
+
+% Font encoding
+\usepackage[T1]{fontenc}
+
+% Improved math notation
+\usepackage{amsmath}
+\usepackage{amssymb}
+
+% Reduce spacing in lists
+\usepackage{enumitem}
+\setlist{nolistsep}
+\renewcommand{\labelitemi}{\tiny$\blacksquare$}
+
 % Footnotes to Endnotes
 \usepackage{xpatch}
 \usepackage{endnotes}
 \let\footnote=\endnote
+\renewcommand{\notesname}{NOTES}
 
 \renewcommand{\notesname}{NOTES}
 \makeatletter
@@ -16,6 +36,7 @@
 % Bibliography
 \usepackage{natbib}
 \bibliographystyle{apalike}
+\renewcommand{\bibsection}{\section*{References}}
 
 % Style
-\usepackage{aux/templates/tismir/style/tismir}
+\usepackage{aux/style/tismir}

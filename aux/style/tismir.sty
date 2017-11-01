@@ -34,7 +34,6 @@
 
 \setlength\normallineskip{1\p@}
 \setlength\parskip{0\p@ \@plus \p@}
-%\def\baselinestretch{0.98}
 
 \def\normalsize{\@setsize\normalsize{10pt}\xpt\@xpt}
 \def\small{\@setsize\small{9pt}\ixpt\@ixpt}
@@ -70,6 +69,7 @@
   \gdef\@articletype{}
   \gdef\@title{}
   \gdef\@theabstract{}
+  \gdef\@thekeywords{}
   \let\thanks\relax
 }
 
@@ -94,6 +94,9 @@
   \vspace{1.0em}
   
   \@theabstract
+  \par
+  
+  \@thekeywords
   
   \vspace{1.0em}
 }
@@ -113,27 +116,16 @@
 
 \def\@abstracttitle{\large \textbf{Abstract} \\}
 
-% %%%From the setspace package
-% \newcommand{\setstretch}[1]{%
-%   \def\baselinestretch{#1}%
-%   \@currsize
-% }
-% \newcommand{\restore@spacing}{%
-%     \par
-%     \vskip \parskip
-%     \vskip \baselineskip
-%   \endgroup
-%   \vskip -\parskip
-%   \vskip -\baselineskip
-% }
-% \newenvironment{spacing}[1]{%
-%   \par
-%   \begingroup
-%     \setstretch {#1}%
-% }{%
-%   \restore@spacing
-% }
-% %%%
+\def\thekeywords#1{
+  \gdef\@thekeywords{
+    \@keywordstitle%
+    #1
+    \hfill \\ \par
+  }
+}
+
+\def\@keywordstitle{\large Keywords: }
+
 
 \def\multauthor#1#2{
   \gdef\@author{
@@ -245,88 +237,6 @@
   {\normalsize\itshape}{\thesubsubsection}
   {8pt \@plus.2ex}{}[]
 
-
-% \renewcommand\section{
-%   % \@ismirsectiontrue
-%   \@startsection
-%   {section}
-%   {1}
-%   {\z@}
-%   {-3.5ex \@plus -1ex \@minus -.2ex}
-%   {6pt \@plus.2ex}
-%   {\large\bf\raggedright\uppercase}
-% }
-
-% \renewcommand\subsection{
-%   \@ismirsectionfalse
-%   \@startsection
-%   {subsection}
-%   {2}
-%   {\z@}
-%   {-2.5ex \@plus -1ex \@minus -.2ex}
-%   {6pt \@plus.2ex}
-%   {\normalsize\bf\raggedright}
-% }
-
-% \renewcommand\subsubsection{
-%   \@ismirsectionfalse
-%   \@startsection
-%   {subsubsection}
-%   {3}
-%   {\z@}
-%   {-1.5ex \@plus -1ex \@minus -.2ex}
-%   {6pt \@plus.2ex}
-%   {\normalsize\it\raggedright}
-% }
-
-% \def\@sect#1#2#3#4#5#6[#7]#8{
-%   \refstepcounter{#1}
-%   \if@ismirsection
-%     \edef\@svsec{\csname the#1\endcsname.\hskip 0.6em}
-%   \else
-%     \edef\@svsec{\csname the#1\endcsname\hskip 0.6em}
-%   \fi
-%   \begingroup
-%     \ifnum #2=1
-%       \bf\centering{\interlinepenalty \@M \@svsec\uppercase{#8}\par}
-%     \else
-%       \ifnum #2=2
-%         \bf\raggedright
-%         \noindent{\interlinepenalty \@M \@svsec #8\par}
-%       \else
-%         \it\raggedright
-%         \noindent{\interlinepenalty \@M \@svsec #8\par}
-%       \fi
-%     \fi
-%   \endgroup
-%   \csname #1mark\endcsname{#7}\addcontentsline
-%   {toc}{#1}{\protect\numberline
-%   \if@ismirsection
-%     {\csname the#1\endcsname.}
-%   \else
-%     {\csname the#1\endcsname}
-%   \fi
-%   #7}
-%   \@tempskipa #5\relax
-%   \@xsect{\@tempskipa}
-% }
-
-%
-
-%\def\thebibliography#1{
-%  \section{References}\list
-%  {[\arabic{enumi}]}{
-%  \settowidth\labelwidth{[#1]}\leftmargin 1em
-%  \advance\leftmargin\labelsep
-%  \usecounter{enumi}
-%  }
-%  \def\newblock{\hskip .01em plus .01em minus .01em}
-%  \sloppy\clubpenalty4000\widowpenalty4000
-%  \sfcode`\.=1000\relax
-%}
-%
-%\let\endthebibliography=\endlist
-%
 \long\def\@makecaption#1#2{
   \vskip 10pt
   \setbox\@tempboxa\hbox{#1. #2}
