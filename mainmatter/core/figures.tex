@@ -1,0 +1,62 @@
+\section{Figures}\label{sec:figures}
+
+Figures must all be cited in the main text, in sequential order. 
+All figures should be placed within the text file upon submission and during
+the review process. Figures/images have a resolution of at least 150dpi 
+(300dpi or above preferred). The files are in one of the following formats:
+JPG, TIFF, GIF, PNG, EPS (to maximise quality,
+the original source file is preferred).
+
+After editorial acceptance, you will be asked to provide the figure 
+images in high resolution files, rather than in the submission file, 
+so that this quality is transferred into the publication.
+The typesetting process will place the figures in an appropriate 
+location in the PDF.
+
+\begin{figure}[tbp]
+  \centering
+\begin{tikzpicture}[
+        thick,scale = 0.9, every node/.style = {scale = 0.9},%
+        >=latex',
+        circ/.style={draw, shape = circle, line width = 1pt,
+          minimum size = 0.95 cm},
+        fun/.style={draw, shape = diamond, line width = 1pt,
+          minimum size = 1.2 cm, rounded corners = 0.15 cm}]
+        
+        % Nodes
+         
+        \node[circ] at (-1, 1.5) (R) {$\RecSeq$};
+        \node[circ] at (1, 1.5) (A) {$\LabelSeq$};
+        \node [draw, dashed, 
+          shape = rectangle,
+          rounded corners = 0.25 cm,
+          minimum width = 3.5 cm,
+          minimum height= 1.25 cm] at (0, 1.5) {};
+        \node[] at (0, 1.75) (D) {$\Corpus$};
+
+        \node[fun] at (0, 0) (S) {$\Sys$};
+
+        \node[circ] at (-1, -1.5) (Ahat) {$\LabelPredSeq$};
+
+        \node[fun] at (2, -0) (PM) {$\PerfMet$};
+        \node[circ] at (1, -1.5) (Y) {$\Obs$};
+
+        % Edges
+
+        \draw[->] (R) -- (Ahat);
+        \draw[->] (S) -- (Ahat);
+        \draw[->] (A) -- (Y);
+        \draw[->] (Ahat) -- (Y);
+        \draw[->] (PM) -- (Y);
+      \end{tikzpicture}
+
+\caption{Relationship between components in
+  a single run of the experiment described in Sec.~\ref{sec:bbsingle}.
+\label{fig:bbsingle} 
+}
+\end{figure}
+
+Each figure must have an accompanying descriptive main title.
+This should clearly and concisely summarise the content and/or
+use of the figure image.
+A short additional figure legend is optional to offer a further description.

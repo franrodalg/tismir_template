@@ -1,0 +1,21 @@
+% Footnotes to Endnotes
+\usepackage{xpatch}
+\usepackage{endnotes}
+\let\footnote=\endnote
+
+\renewcommand{\notesname}{NOTES}
+\makeatletter
+\xpretocmd{\theendnotes}{%
+  \xpatchcmd{\@makeenmark}{\hbox{\@textsuperscript{\normalfont\@theenmark}}}{%
+   \hbox{\normalfont\theenmark.\space}%
+ }{}{}%
+}{}{}
+
+\makeatother
+
+% Bibliography
+\usepackage{natbib}
+\bibliographystyle{apalike}
+
+% Style
+\usepackage{aux/templates/tismir/style/tismir}
